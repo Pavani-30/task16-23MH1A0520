@@ -1,0 +1,119 @@
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... Etc/UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+initdb: warning: enabling "trust" authentication for local connections
+initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+waiting for server to start....2026-03-22 08:10:03.884 UTC [48] LOG:  starting PostgreSQL 15.17 (Debian 15.17-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-03-22 08:10:03.891 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-03-22 08:10:03.916 UTC [51] LOG:  database system was shut down at 2026-03-22 08:10:02 UTC
+2026-03-22 08:10:03.945 UTC [48] LOG:  database system is ready to accept connections
+ done
+server started
+CREATE DATABASE
+
+
+/usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/init.sql
+CREATE TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE TABLE
+ALTER TABLE
+CREATE PUBLICATION
+
+
+waiting for server to shut down...2026-03-22 08:10:04.583 UTC [48] LOG:  received fast shutdown request
+.2026-03-22 08:10:04.589 UTC [48] LOG:  aborting any active transactions
+2026-03-22 08:10:04.594 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+2026-03-22 08:10:04.596 UTC [49] LOG:  shutting down
+2026-03-22 08:10:04.602 UTC [49] LOG:  checkpoint starting: shutdown immediate
+2026-03-22 08:10:04.931 UTC [49] LOG:  checkpoint complete: wrote 938 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.106 s, sync=0.203 s, total=0.335 s; sync files=313, longest=0.015 s, average=0.001 s; distance=4318 kB, estimate=4318 kB
+2026-03-22 08:10:04.964 UTC [48] LOG:  database system is shut down
+ done
+server stopped
+
+PostgreSQL init process complete; ready for start up.
+
+2026-03-22 08:10:05.061 UTC [1] LOG:  starting PostgreSQL 15.17 (Debian 15.17-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+2026-03-22 08:10:05.062 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-03-22 08:10:05.062 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-03-22 08:10:05.075 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-03-22 08:10:05.095 UTC [66] LOG:  database system was shut down at 2026-03-22 08:10:04 UTC
+2026-03-22 08:10:05.114 UTC [1] LOG:  database system is ready to accept connections
+2026-03-22 08:10:21.189 UTC [95] LOG:  logical decoding found consistent point at 0/19C66A8
+2026-03-22 08:10:21.189 UTC [95] DETAIL:  There are no running transactions.
+2026-03-22 08:10:21.189 UTC [95] STATEMENT:  SELECT pg_create_logical_replication_slot('my_replication_slot', 'pgoutput')
+2026-03-22 08:15:05.049 UTC [64] LOG:  checkpoint starting: time
+2026-03-22 08:15:16.387 UTC [64] LOG:  checkpoint complete: wrote 115 buffers (0.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=11.263 s, sync=0.037 s, total=11.339 s; sync files=36, longest=0.008 s, average=0.002 s; distance=836 kB, estimate=836 kB
+2026-03-22 08:42:21.257 UTC [2365] ERROR:  replication slot "my_replication_slot" already exists
+2026-03-22 08:42:21.257 UTC [2365] STATEMENT:  SELECT pg_create_logical_replication_slot('my_replication_slot', 'pgoutput')
+2026-03-22 08:42:21.288 UTC [2366] ERROR:  invalid proto_version
+2026-03-22 08:42:21.288 UTC [2366] CONTEXT:  slot "my_replication_slot", output plugin "pgoutput", in the startup callback
+2026-03-22 08:42:21.288 UTC [2366] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version 'undefined', publication_names 'my_publication', messages 'false')
+2026-03-22 08:52:18.957 UTC [3337] ERROR:  replication slot "my_replication_slot" already exists
+2026-03-22 08:52:18.957 UTC [3337] STATEMENT:  SELECT pg_create_logical_replication_slot('my_replication_slot', 'pgoutput')
+2026-03-22 08:52:18.995 UTC [3338] LOG:  starting logical decoding for slot "my_replication_slot"
+2026-03-22 08:52:18.995 UTC [3338] DETAIL:  Streaming transactions committing after 0/19C66E0, reading WAL from 0/19C66A8.
+2026-03-22 08:52:18.995 UTC [3338] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 08:52:18.996 UTC [3338] LOG:  logical decoding found consistent point at 0/19C66A8
+2026-03-22 08:52:18.996 UTC [3338] DETAIL:  There are no running transactions.
+2026-03-22 08:52:18.996 UTC [3338] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 08:53:18.996 UTC [3338] LOG:  terminating walsender process due to replication timeout
+2026-03-22 08:53:18.996 UTC [3338] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 08:58:33.843 UTC [64] LOG:  checkpoint starting: time
+2026-03-22 08:58:34.528 UTC [64] LOG:  checkpoint complete: wrote 7 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.630 s, sync=0.018 s, total=0.687 s; sync files=7, longest=0.011 s, average=0.003 s; distance=10 kB, estimate=754 kB
+2026-03-22 09:13:33.468 UTC [64] LOG:  checkpoint starting: time
+2026-03-22 09:13:33.836 UTC [64] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.314 s, sync=0.013 s, total=0.369 s; sync files=3, longest=0.009 s, average=0.005 s; distance=20 kB, estimate=680 kB
+2026-03-22 09:28:33.864 UTC [64] LOG:  checkpoint starting: time
+2026-03-22 09:28:34.224 UTC [64] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.310 s, sync=0.014 s, total=0.360 s; sync files=3, longest=0.010 s, average=0.005 s; distance=12 kB, estimate=614 kB
+2026-03-22 09:33:13.398 UTC [7280] ERROR:  replication slot "my_replication_slot" already exists
+2026-03-22 09:33:13.398 UTC [7280] STATEMENT:  SELECT pg_create_logical_replication_slot('my_replication_slot', 'pgoutput')
+2026-03-22 09:33:13.444 UTC [7281] LOG:  starting logical decoding for slot "my_replication_slot"
+2026-03-22 09:33:13.444 UTC [7281] DETAIL:  Streaming transactions committing after 0/19C66E0, reading WAL from 0/19C66A8.
+2026-03-22 09:33:13.444 UTC [7281] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:33:13.446 UTC [7281] LOG:  logical decoding found consistent point at 0/19C66A8
+2026-03-22 09:33:13.446 UTC [7281] DETAIL:  There are no running transactions.
+2026-03-22 09:33:13.446 UTC [7281] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:33:13.666 UTC [7281] LOG:  could not receive data from client: Connection reset by peer
+2026-03-22 09:33:13.666 UTC [7281] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:33:13.666 UTC [7281] LOG:  unexpected EOF on standby connection
+2026-03-22 09:33:13.666 UTC [7281] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/00000000 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:33:33.237 UTC [64] LOG:  checkpoint starting: time
+2026-03-22 09:33:36.426 UTC [64] LOG:  checkpoint complete: wrote 31 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.137 s, sync=0.015 s, total=3.190 s; sync files=6, longest=0.011 s, average=0.003 s; distance=137 kB, estimate=566 kB
+2026-03-22 09:37:39.751 UTC [7715] ERROR:  replication slot "my_replication_slot" already exists
+2026-03-22 09:37:39.751 UTC [7715] STATEMENT:  SELECT pg_create_logical_replication_slot('my_replication_slot', 'pgoutput')
+2026-03-22 09:37:39.790 UTC [7716] LOG:  0/1A15438 has been already streamed, forwarding to 0/1A15439
+2026-03-22 09:37:39.790 UTC [7716] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/1A15438 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:37:39.792 UTC [7716] LOG:  starting logical decoding for slot "my_replication_slot"
+2026-03-22 09:37:39.792 UTC [7716] DETAIL:  Streaming transactions committing after 0/1A15439, reading WAL from 0/1A0A4F0.
+2026-03-22 09:37:39.792 UTC [7716] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/1A15438 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:37:39.793 UTC [7716] LOG:  logical decoding found consistent point at 0/1A0A4F0
+2026-03-22 09:37:39.793 UTC [7716] DETAIL:  There are no running transactions.
+2026-03-22 09:37:39.793 UTC [7716] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/1A15438 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:38:33.384 UTC [64] LOG:  checkpoint starting: time
+2026-03-22 09:38:33.947 UTC [64] LOG:  checkpoint complete: wrote 6 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.511 s, sync=0.015 s, total=0.564 s; sync files=5, longest=0.010 s, average=0.003 s; distance=5 kB, estimate=510 kB
+2026-03-22 09:38:40.031 UTC [7716] LOG:  terminating walsender process due to replication timeout
+2026-03-22 09:38:40.031 UTC [7716] STATEMENT:  START_REPLICATION SLOT "my_replication_slot" LOGICAL 0/1A15438 (proto_version '1', publication_names 'my_publication', messages 'false')
+2026-03-22 09:43:33.913 UTC [64] LOG:  checkpoint starting: time
+2026-03-22 09:43:34.061 UTC [64] LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.108 s, sync=0.010 s, total=0.149 s; sync files=2, longest=0.007 s, average=0.005 s; distance=5 kB, estimate=459 kB

@@ -1,0 +1,43 @@
+
+> cdc-consumer@1.0.0 start
+> node index.js
+
+Meilisearch indexes initialized.
+Starting replication on slot my_replication_slot from LSN 0/0
+/app/index.js:173
+      relations[log.relation.id] = log.relation;
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'id')
+    at LogicalReplicationService.<anonymous> (/app/index.js:173:30)
+    at EventEmitter.emit (/app/node_modules/eventemitter2/lib/eventemitter2.js:1014:19)
+    at Connection.<anonymous> (/app/node_modules/pg-logical-replication/dist/logical-replication-service.js:96:30)
+    at Connection.emit (node:events:529:35)
+    at /app/node_modules/pg/lib/connection.js:115:12
+    at Parser.parse (/app/node_modules/pg-protocol/dist/parser.js:38:17)
+    at Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+
+Node.js v18.20.8
+
+> cdc-consumer@1.0.0 start
+> node index.js
+
+Meilisearch indexes initialized.
+Starting replication on slot my_replication_slot from LSN 0/1A15438
+Sending to Redis: {"table":"products","operation":"UPDATE","timestamp":"2026-03-22T09:37:39.921Z","data":{"product_id":1,"name":"Awesome Fresh Tuna","description":"The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive","price":"99.99","category_id":3}}
+Sending to Redis: {"table":"products","operation":"UPDATE","timestamp":"2026-03-22T09:37:39.925Z","data":{"product_id":1,"name":"Awesome Fresh Tuna","description":"The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive","price":"199.99","category_id":3}}
+Sending to Redis: {"table":"products","operation":"UPDATE","timestamp":"2026-03-22T09:37:40.007Z","data":{"product_id":1,"name":"Awesome Fresh Tuna","description":"The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive","price":"250.00","category_id":3}}
+Replication error: Error: Connection terminated unexpectedly
+    at Connection.<anonymous> (/app/node_modules/pg/lib/client.js:180:73)
+    at Object.onceWrapper (node:events:631:28)
+    at Connection.emit (node:events:517:28)
+    at Socket.<anonymous> (/app/node_modules/pg/lib/connection.js:61:12)
+    at Socket.emit (node:events:517:28)
+    at TCP.<anonymous> (node:net:350:12)
+Error: Connection terminated unexpectedly
+    at /app/node_modules/pg/lib/client.js:631:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Timeout.main [as _onTimeout] (/app/index.js:212:5)

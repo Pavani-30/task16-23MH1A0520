@@ -1,0 +1,23 @@
+
+> cdc-consumer@1.0.0 start
+> node index.js
+
+Meilisearch indexes initialized.
+Starting replication on slot my_replication_slot from LSN 0/0
+/app/index.js:173
+      relations[log.relation.id] = log.relation;
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'id')
+    at LogicalReplicationService.<anonymous> (/app/index.js:173:30)
+    at EventEmitter.emit (/app/node_modules/eventemitter2/lib/eventemitter2.js:1014:19)
+    at Connection.<anonymous> (/app/node_modules/pg-logical-replication/dist/logical-replication-service.js:96:30)
+    at Connection.emit (node:events:529:35)
+    at /app/node_modules/pg/lib/connection.js:115:12
+    at Parser.parse (/app/node_modules/pg-protocol/dist/parser.js:38:17)
+    at Socket.<anonymous> (/app/node_modules/pg-protocol/dist/index.js:11:42)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+
+Node.js v18.20.8
